@@ -4,8 +4,8 @@ import HeroImage from '../assets/Images/HeroImage.png'
 const HeroSection = () => {
     return (
         <>
-            <div className='relative w-full bg-gray-50 mt-10'>
-                <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+            <div className='relative w-full bg-gray-50'>
+                <div className="container mx-auto flex px-5 py-22 md:flex-row flex-col items-center">
                     {/* <div className='absolute left-28 top-20 -space-y-16' style={{ fontSize: '10rem', zIndex: '0', }}>
                         <h1 className='text-white hover:text-gray-300 transition-colors duration-300'>SALE</h1>
                         <h1 className='text-white hover:text-gray-300 transition-colors duration-300'>SALE</h1>

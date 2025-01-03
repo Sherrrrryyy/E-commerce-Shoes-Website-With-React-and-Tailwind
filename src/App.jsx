@@ -5,6 +5,7 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import HeroSection from './Components/HeroSection'
 import Cards from './Components/Cards'
+import MoreToShop from './Components/MoreToShop'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <HeroSection />
       <Cards />
+      <MoreToShop />
 
      
 
