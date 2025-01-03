@@ -14,12 +14,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar />
-      <HeroSection />
-      <Cards />
-      <MoreToShop />
-      <Dibs />
-
         <Routes>
           <Route path='/rerun' element={<Rerun />} />
         </Routes>
