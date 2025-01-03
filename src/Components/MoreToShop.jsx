@@ -84,7 +84,7 @@ const MoreToShop = () => {
         <>
             <h2 className="text-2xl font-bold flex justify-start text-gray-800 mt-12 mb-4">More to shop</h2>
             <div className="relative">
-                <button onClick={scrollLeft} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10">
+                <button onClick={scrollLeft} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black font-bold  text-white p-2 rounded-full z-10">
                     &lt;
                 </button>
                 <div ref={scrollContainerRef} className="flex overflow-x-auto space-x-4 p-4">
@@ -104,7 +104,7 @@ const MoreToShop = () => {
                         })
                     }
                 </div>
-                <button onClick={scrollRight} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                <button onClick={scrollRight} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black font-bold  text-white p-2 rounded-full">
                     &gt;
                 </button>
                 <div className="flex justify-center mt-4">
