@@ -4,7 +4,6 @@ import Navbar from '../Components/Navbar'
 const Rerun = () => {
     return (
         <>
-            <Navbar />
             <div className='flex '>
                 <img
                     className='mr-10'
