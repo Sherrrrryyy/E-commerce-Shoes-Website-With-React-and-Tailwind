@@ -1,0 +1,18 @@
+@keyframes slideInFromTopLeft {
+    0% {
+        transform: translate(-100%, -100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(100%, 100%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+.animate-shoe {
+    animation: slideInFromTopLeft 1s ease-out;
+}

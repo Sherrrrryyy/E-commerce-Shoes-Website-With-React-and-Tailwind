@@ -1,5 +1,7 @@
 import React from 'react'
 import HeroImage from '../assets/Images/HeroImage.png'
+import './HeroSection.css'
+
 
 const HeroSection = () => {
     return (
@@ -14,8 +16,8 @@ const HeroSection = () => {
                     </div> */}
 
                     <div className="" style={{ zIndex: '1' }}>
-                        <img
-                            className="object-cover object-center rounded "
+                    <img
+                            className="object-cover object-center rounded animate-shoe"
                             src={HeroImage}
                             height={'800px'}
                             width={'500px'}
