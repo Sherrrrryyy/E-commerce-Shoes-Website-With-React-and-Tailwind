@@ -43,19 +43,18 @@ const SignUp = () => {
             .catch((error) => {
                 alert(error.message)
             })
-        // console.log(userSign);
-
-        // .then((res)=>{
-        //     const user = res.user.id
-        //     console.log(user);
-
-        //     const userId = localStorage.setItem('user', user)
-        //     console.log(userId);
-
-
-        // })
     }
 
+
+    const checkEmail = () => {
+        const regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0'
+        if (regex.test(email)) {
+            return true
+        } else {
+            return false
+        }
+
+    }
 
     return (
         <>
@@ -75,12 +74,12 @@ const SignUp = () => {
                         />
                         <input
 
-                            onChange={(e) => setEmail(e.target.value)}
                             value={email}
                             id="email"
                             type="text"
                             placeholder="Enter your email"
                             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                            onChange={(e) => { setEmail(e.target.value), checkEmail() }}
                         />
                         <input
                             onChange={(e) => setPassword(e.target.value)}
