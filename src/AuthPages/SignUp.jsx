@@ -13,9 +13,10 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
+
     useEffect(() => {
-        const checkUser = () => {
-            const userId = localStorage.setItem('users', user)
+        const checkUser = async () => {
+            const userId = localStorage.getItem('users', user)
             if (userId) {
                 navigate('/login', { replace: true })
             }
@@ -23,16 +24,12 @@ const SignUp = () => {
         checkUser()
     }, [navigate])
 
-
     const handleUser = async (e) => {
         e.preventDefault()
-
         const userSign = await createUserWithEmailAndPassword(auth, email, password)
             .then((res) => {
                 const user = res.user.uid
                 const userId = localStorage.setItem('users', user)
-
-
                 const userObject = {
                     name,
                     email,
