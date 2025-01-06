@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { auth, db } from '../Firebase/firebaseconfig'
 import { doc, setDoc } from 'firebase/firestore'
@@ -13,6 +13,17 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const checkUser = () => {
+            const userId = localStorage.setItem('users', user)
+            if (userId) {
+                navigate('/login', { replace: true })
+            }
+        }
+        checkUser()
+    }, [navigate])
+
+
     const handleUser = async (e) => {
         e.preventDefault()
 
@@ -21,11 +32,12 @@ const SignUp = () => {
                 const user = res.user.uid
                 const userId = localStorage.setItem('users', user)
 
-                // const userObject = {
-                //     name,
-                //     email,
-                // }
-                // setDoc(doc(db, "Signup users", user, userObject))
+
+                const userObject = {
+                    name,
+                    email,
+                }
+                setDoc(doc(db, "Signup users", user), userObject)
                 navigate('/login', { replace: true })
             })
             .catch((error) => {
@@ -62,6 +74,7 @@ const SignUp = () => {
                             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                         />
                         <input
+
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
                             id="email"
