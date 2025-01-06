@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { auth } from '../Firebase/firebaseconfig'
+import { auth, db } from '../Firebase/firebaseconfig'
+import { doc, setDoc } from 'firebase/firestore'
 
 const SignUp = () => {
 
@@ -12,19 +13,35 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
-    const handleUser = (e) => {
+    const handleUser = async (e) => {
         e.preventDefault()
 
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((res)=>{
-            const user = res.user.id
-            console.log(user);
+        const userSign = await createUserWithEmailAndPassword(auth, email, password)
+            .then((res) => {
+                const user = res.user.uid
+                const userId = localStorage.setItem('users', user)
 
-            const userId = localStorage.setItem('user', user)
-            console.log(userId);
-            
-            
-        })
+                // const userObject = {
+                //     name,
+                //     email,
+                // }
+                // setDoc(doc(db, "Signup users", user, userObject))
+                navigate('/login', { replace: true })
+            })
+            .catch((error) => {
+                alert(error.message)
+            })
+        // console.log(userSign);
+
+        // .then((res)=>{
+        //     const user = res.user.id
+        //     console.log(user);
+
+        //     const userId = localStorage.setItem('user', user)
+        //     console.log(userId);
+
+
+        // })
     }
 
 
@@ -37,7 +54,7 @@ const SignUp = () => {
                     </div>
                     <div className="space-y-6">
                         <input
-                            onChange={(e) =>setName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             value={name}
                             id="name"
                             type="text"
@@ -53,7 +70,7 @@ const SignUp = () => {
                             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                         />
                         <input
-                        onChange={(e)=> setPassword(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value)}
                             value={password}
                             id="password"
                             type="password"
